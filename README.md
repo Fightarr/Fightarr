@@ -2,23 +2,12 @@
 
 An automated MMA/UFC/Boxing event acquisition and management system for the *Arr ecosystem.
 
-## Features
-
-- Radarr-style web interface for managing fight events
-- Quality profiles and release monitoring
-- Integration with download clients (qBittorrent, Transmission, etc.)
-- Support for UFC, Bellator, PFL, ONE Championship, and more
-- Custom indexer support for MMA/Boxing releases
-- Automatic metadata fetching for fight events
-
 ## Quick Start
 
 ### Docker Compose (Recommended)
 
-1. Create a `docker-compose.yml` file:
 ```yaml
 version: '3.8'
-
 services:
   fightarr:
     image: fightarr/fightarr:latest
@@ -29,12 +18,12 @@ services:
       - TZ=UTC
     volumes:
       - ./config:/config
-      - ./logs:/logs
-      - /path/to/downloads:/downloads
-      - /path/to/media:/media
+      - ./downloads:/downloads
+      - ./media:/media
     ports:
-      - "7878:7878"
+      - "17878:17878"  # Changed from 7878
     restart: unless-stopped
+
 
 
 

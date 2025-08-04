@@ -39,7 +39,7 @@ COPY --from=build /app/publish /app
 COPY docker/root/ /
 
 # Expose port
-EXPOSE 7878
+EXPOSE 17878
 
 # Volume definitions
 VOLUME ["/config"]

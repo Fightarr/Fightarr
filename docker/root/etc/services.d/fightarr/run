@@ -5,7 +5,7 @@ echo "Starting Fightarr..."
 cd /app
 
 # Set environment variables for *Arr compatibility
-export ASPNETCORE_URLS="http://+:7878"
+export ASPNETCORE_URLS="http://+:17878"
 export ASPNETCORE_ENVIRONMENT="Production"
 export ConnectionStrings__DefaultConnection="Data Source=/config/fightarr.db"
 
