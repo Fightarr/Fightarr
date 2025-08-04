@@ -17,5 +17,5 @@ chown -R $PUID:$PGID /config /logs
 export ASPNETCORE_URLS="http://+:17878"
 export ConnectionStrings__DefaultConnection="Data Source=/config/fightarr.db"
 
-# Start app
-exec su-exec $PUID:$PGID dotnet Fightarr.Web.dll
+# Start app using gosu instead of su-exec
+exec gosu $PUID:$PGID dotnet Fightarr.Web.dll

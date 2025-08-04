@@ -13,13 +13,13 @@ COPY src/ src/
 WORKDIR /src/src/Fightarr.Web
 RUN dotnet publish -c Release -o /app/publish
 
-# Runtime stage - Microsoft base (simpler)
+# Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /app
 
-# Install su-exec for user management
+# Install gosu (available in Ubuntu repos) instead of su-exec
 RUN apt-get update && apt-get install -y \
-    su-exec \
+    gosu \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
