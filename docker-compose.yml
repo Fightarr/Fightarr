@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  fightarr:
+    image: fightarr/fightarr:latest
+    container_name: fightarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:7878
+      - ConnectionStrings__DefaultConnection=Data Source=/config/fightarr.db
+      - MetadataProvider__BaseUrl=https://api.fightarr.com
+      - Logging__LogLevel__Default=Information
+    volumes:
+      - ./config:/config
+      - ./logs:/logs
+      - /path/to/downloads:/downloads
+      - /path/to/media:/media
+    ports:
+      - "7878:7878"
+    restart: unless-stopped
+
+networks:
+  default:
+    name: fightarr
