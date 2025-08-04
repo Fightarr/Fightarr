@@ -19,4 +19,5 @@ jobs:
       run: docker build . -t fightarr/fightarr:latest
     - name: publish image to docker hub
       run:
+        docker login -u fightarr -p ${{ secrets.DOCKER_HUB_TOKEN }}
         docker push fightarr/fightarr:latest
