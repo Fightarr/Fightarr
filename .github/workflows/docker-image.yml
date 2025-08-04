@@ -1,0 +1,23 @@
+name: Build and Publish image to Docker Hub
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  publish-images:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build . -t fightarr/fightarr:latest
+    - name: publish image to docker hub
+      run:
+        docker login -u fightarr -p ${{ secrets.DOCKER_HUB_TOKEN }}
+        docker push fightarr/fightarr:latest
