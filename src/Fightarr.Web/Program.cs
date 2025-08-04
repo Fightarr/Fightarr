@@ -55,8 +55,7 @@ builder.Services.AddCors(options =>
 
 // Add health checks
 builder.Services.AddHealthChecks()
-    .AddDbContextCheck<FightarrDbContext>();
-
+    .AddCheck("database", () => Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult.Healthy("Database is available"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline

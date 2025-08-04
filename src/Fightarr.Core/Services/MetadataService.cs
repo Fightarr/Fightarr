@@ -130,7 +130,7 @@ public class MetadataService : IMetadataService
         }
     }
 
-    public async Task<FightEvent?> UpdateEventMetadataAsync(int eventId)
+    public Task<FightEvent?> UpdateEventMetadataAsync(int eventId)
     {
         try
         {
@@ -139,12 +139,12 @@ public class MetadataService : IMetadataService
             
             // Implementation would depend on your local data access layer
             // For now, return null as placeholder
-            return null;
+            return Task.FromResult<FightEvent?>(null);
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error updating event metadata for ID: {EventId}", eventId);
-            return null;
+            return Task.FromResult<FightEvent?>(null);
         }
     }
 }
