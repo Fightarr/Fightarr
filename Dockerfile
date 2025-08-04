@@ -17,7 +17,7 @@ RUN dotnet publish -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /app
 
-# Install gosu (available in Ubuntu repos) instead of su-exec
+# Install gosu and curl
 RUN apt-get update && apt-get install -y \
     gosu \
     curl \
@@ -25,6 +25,9 @@ RUN apt-get update && apt-get install -y \
 
 # Copy application
 COPY --from=build /app/publish .
+
+# Create wwwroot directory to fix static files warning
+RUN mkdir -p /app/wwwroot
 
 # Copy init script
 COPY docker/init.sh /init.sh
@@ -34,4 +37,9 @@ RUN chmod +x /init.sh
 RUN mkdir -p /config /logs
 
 EXPOSE 17878
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost:17878/health || exit 1
+
 ENTRYPOINT ["/init.sh"]
