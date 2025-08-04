@@ -1,0 +1,12 @@
+#!/usr/bin/with-contenv bash
+
+echo "Setting up Fightarr configuration..."
+
+# Create necessary directories
+mkdir -p /config/logs
+
+# Set permissions
+chown -R abc:abc /config
+chmod -R 755 /config
+
+echo "Fightarr configuration complete."

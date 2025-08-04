@@ -1,4 +1,13 @@
 #!/usr/bin/with-contenv bash
 
+echo "Starting Fightarr..."
+
 cd /app
+
+# Set environment variables for *Arr compatibility
+export ASPNETCORE_URLS="http://+:7878"
+export ASPNETCORE_ENVIRONMENT="Production"
+export ConnectionStrings__DefaultConnection="Data Source=/config/fightarr.db"
+
+# Start the application
 exec s6-setuidgid abc dotnet Fightarr.Web.dll
