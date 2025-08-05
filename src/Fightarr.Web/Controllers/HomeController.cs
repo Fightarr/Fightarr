@@ -2,9 +2,33 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Fightarr.Web.Controllers;
 
+public class HomeController : Controller
+{
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    public IActionResult Dashboard()
+    {
+        return View();
+    }
+
+    public IActionResult Events()
+    {
+        return View();
+    }
+
+    public IActionResult Settings()
+    {
+        return View();
+    }
+}
+
+// Keep API controller separate
 [ApiController]
-[Route("/")]
-public class HomeController : ControllerBase
+[Route("api")]
+public class ApiHomeController : ControllerBase
 {
     [HttpGet]
     public ActionResult Get()
@@ -15,7 +39,7 @@ public class HomeController : ControllerBase
             timestamp = DateTime.UtcNow 
         });
     }
-    
+        
     [HttpGet("health")]
     public ActionResult Health()
     {

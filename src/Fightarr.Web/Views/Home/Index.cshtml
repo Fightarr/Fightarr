@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h1>Welcome to Fightarr</h1>
+        <p class="lead">Your automated MMA/UFC/Boxing event acquisition system</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Recent Events</h5>
+                <p class="card-text">View recently aired fight events</p>
+                <a href="/events" class="btn btn-primary">View Events</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">System Status</h5>
+                <p class="card-text">Monitor system health and performance</p>
+                <a href="/system/status" class="btn btn-secondary">Check Status</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Settings</h5>
+                <p class="card-text">Configure indexers and download clients</p>
+                <a href="/settings" class="btn btn-success">Settings</a>
+            </div>
+        </div>
+    </div>
+</div>
